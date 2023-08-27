@@ -44,6 +44,14 @@ mel-spectrogram representations are then saved as images ready to be fed to the 
 model.
 
 
+<figure>
+  <p align="center">
+  <img src="https://github.com/simoneVU/Voice-Recognition-Mali-Seeds/blob/main/images/mel_spectrograms.png" width="400" title="1D audio signal vs 2D melspectrogram">
+    </p>
+</figure>
+
+On the left side of the image above there are the 1D audio signals while on the right side their respective 2D melspectrogram.
+
 ## Model Implementation
 
 The model backbone is implemented using the pre-trained model ConvNeXt small from the timm library 1. The pre-trained model head is switched for a 10-class one,
@@ -52,4 +60,23 @@ normalization layer, a linear layer followed by ReLU, another batch normalizatio
 by dropout with probability 0.5 and the output layer (see figure 5). The model is fine tuned and
 validated over 300 epochs on 1000 and 100 voice recordings respectively. Hence, as it is possible to
 see from figure 5, the backbone weights are frozen, while the weights of the model head are to be
-optimized. After fine tuning the model head, the whole model is tested on 660 voice recordings
+optimized. After fine tuning the model head, the whole model is tested on 660 voice recordings. The model architecture can be seen in the following image:
+
+
+<figure>
+  <p align="center">
+  <img src="https://github.com/simoneVU/Voice-Recognition-Mali-Seeds/blob/main/images/ICT4D_model_head.png" width="700" title="model architecture">
+    </p>
+</figure>
+
+While the final result seen as a confusion matrix are the following:
+
+<figure>
+  <p align="center">
+  <img src="https://github.com/simoneVU/Voice-Recognition-Mali-Seeds/blob/main/images/confusion_matrix_1_f17d6e42908696b83fe0.png" width="700" title="final CF">
+    </p>
+</figure>
+
+# Reproducibility
+
+In order to reproduce the results above run the code in collab notebook https://github.com/simoneVU/Voice-Recognition-Mali-Seeds/blob/main/Voice%20Recognition%20model.ipynb. Email me at s2.colombo@student.vu.nl for the data collected.
